@@ -51,7 +51,7 @@ if [ -z "${version}" ]; then
 fi
 
 image=spiffe-csi-driver
-org_name=$(echo "$GITHUB_REPOSITORY" | tr '/' "\n" | head -1 | tr -d "\n")
+org_name=$(echo "$GITHUB_REPOSITORY" | tr '/' "\n" | head -1 | tr -d "\n" | tr "[:upper:]" "[:lower:]")
 org_name="${org_name:-spiffe}" # default to spiffe in case ran outside of GitHub actions
 registry=ghcr.io/${org_name}
 image_to_push="${registry}/${image}:${version}"

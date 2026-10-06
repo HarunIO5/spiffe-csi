@@ -46,9 +46,8 @@ OCI_IMAGES=(
     spiffe-csi-driver
 )
 
-org_name=$(echo "$GITHUB_REPOSITORY" | tr '/' "\n" | head -1 | tr -d "\n")
-org_name="${org_name:-spiffe}" # default to spiffe in case ran on local
-registry=ghcr.io/${org_name}
+# Local test image only (never pushed); must match test/config/spire/spiffe-csi-driver.yaml
+registry=ghcr.io/spiffe
 
 echo "Importing ${OCI_IMAGES[*]} into docker".
 for img in "${OCI_IMAGES[@]}"; do
